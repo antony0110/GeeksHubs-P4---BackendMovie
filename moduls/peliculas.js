@@ -1,10 +1,13 @@
 const Sequelize = require('sequelize');
 const sqlz = require('./sequelize');
 
+const faker = require('faker');
+const times = require("lodash.times");
+const random = require("lodash.random");
+let r = Math.random < 0.5;
+class Peliculas extends Sequelize.Model {}
 
-class peliculas extends Sequelize.Model {}
-
-peliculas.init(
+Peliculas.init(
     {
         title: { type: Sequelize.STRING }, 
         author: { type: Sequelize.STRING},
@@ -13,17 +16,17 @@ peliculas.init(
     },
     {
         sequelize :sqlz,
-        modelName: 'peliculas'
+        modelName: 'Peliculas'
     }
 );
 
-peliculas.sync({ force: true }).then(() => {
-      peliculas.create({
-      title: 'Soy Leyenda',
-      author: 'Will Smitch',
-      cines:"valencia",
-      estreno:"true" 
-    });
+Peliculas.sync({ force: false }).then(() => {
+    //   Peliculas.bulkCreate(times(10, ()=>({
+    //   title:    `${faker.name.findName()}`,
+    //   author:   `${faker.name.firstName()}`,
+    //   cines:    `${faker.name.jobTitle()}`,
+    //   estreno:  "true" 
+    // })));
 });
 
-module.exports = { peliculas }
+module.exports = { Peliculas }

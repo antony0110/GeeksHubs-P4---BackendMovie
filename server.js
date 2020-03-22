@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const PORT = 3000;
 
 //importacion de modulos
-const Peliculas = require('./moduls/peliculas');
+const {Peliculas} = require('./moduls/peliculas');
 
 
 const app = express();
@@ -14,17 +14,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //Pelis
 app.get('/Peliculas', (req, res) => {
-    let id = req.query.id
-    Peliculas.findAll({ where: { id: id }}).then( peliculas => {
-        res.json(peliculas);
-    });
-});
+    let title = req.query.title;
+    if (!req.query.title){
+        Peliculas.findAll().then( pelis => {
+            res.json((pelis));
+        });
+        }else{
+      Peliculas.findAll({ where: { title: title }}).then( movies => {
+                res.json(movies);
+    })
+    }   
+})
 
 //Cine
 // app.get('/Cines', (req, res) => {
-//     let id = req.query.id
-//     Movie.findAll({ where: { id: id }}).then( movies => {
-//         res.json(movies);
+    //     let id = req.query.id
+    //     Movie.findAll({ where: { id: id }}).then( movies => {
+    //         res.json(movies);
 //     });
 // });
 
