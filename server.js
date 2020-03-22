@@ -14,23 +14,24 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //Pelis
 app.get('/Peliculas', (req, res) => {
-    if ((!req.query.id) && (!req.query.title)) {
-        Peliculas.findAll().then( Peliculas => {
-            res.json((Peliculas));
+    let title = req.query.title;
+    if (!req.query.title){
+        Peliculas.findAll().then( pelis => {
+            res.json((pelis));
         });
-    } else if(!req.query.title) {
-        const id = req.query.id;
-        Peliculas.findAll({ where: { id: id }}).then( Peliculas => {
-            res.json((Peliculas));
-        });
-    }else{
-        const title = req.query.title;
-        Peliculas.findAll({ where: { title: title }}).then( Peliculas => {
-            res.json((Peliculas));
-        });
-    }
-
+        }else{
+      Peliculas.findAll({ where: { title : title }}).then( movies => {
+                res.json(movies);
+    })
+    }   
+})
+app.get('/Peliculas/:id', (req, res) => {
+    let id = req.params.id
+    Peliculas.findAll({ where: { id: id }}).then( Peliculas => {
+        res.json(Peliculas);
+    });
 });
+
 //Cine
 // app.get('/Cines', (req, res) => {
     //     let id = req.query.id
