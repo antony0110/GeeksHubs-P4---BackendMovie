@@ -9,24 +9,21 @@ class Actores extends Sequelize.Model {}
 
 Actores.init(
     {
-        title: { type: Sequelize.STRING }, 
-        author: { type: Sequelize.STRING},
-        cines: { type: Sequelize.STRING},
-        estreno: {type: Sequelize.BOOLEAN}
+        nombre: { type: Sequelize.STRING }, 
+        title: { type: Sequelize.STRING},
+        
     },
     {
         sequelize :sqlz,
-        modelName: 'Peliculas'
+        modelName: 'Actores'
     }
 );
 
-Peliculas.sync({ force: false }).then(() => {
-    //   Peliculas.bulkCreate(times(10, ()=>({
-    //   title:    `${faker.name.findName()}`,
-    //   author:   `${faker.name.firstName()}`,
-    //   cines:    `${faker.name.jobTitle()}`,
-    //   estreno:  "true" 
-    // })));
+Actores.sync({ force: false }).then(() => {
+     // Actores.bulkCreate(times(10, ()=>({
+     //  nombre:    `${faker.name.findName()}`,
+      // title:   `${faker.name.jobTitle()}`,
+    //})));
 });
 
-module.exports = { Peliculas }
+module.exports = { Actores }
