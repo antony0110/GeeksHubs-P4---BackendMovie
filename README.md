@@ -1,7 +1,7 @@
 
 # GeeksHubs-P4---BackendMovie
 
-_En es proyecto se basa en realizar una api de peliculas con express, sequelize, sqlite3 y node_
+_En este proyecto se basa en realizar una api de peliculas con express, sequelize, sqlite3 y node_
 
 ### Pre-requisitos 📋
 
