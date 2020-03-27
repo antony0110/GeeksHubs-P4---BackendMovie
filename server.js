@@ -68,6 +68,12 @@ app.get('/Cines', (req, res) => {
     })
     }   
 })
+app.get('/Cines/:name', (req, res) => {
+    let name = req.params.name
+    Cines.findAll({ where: { name: name }}).then( Cines => {
+        res.json(Cines);
+    });
+});
 app.listen(PORT, () => {
 console.log(`El Servidor está inicializado en ${PORT}`);
 });

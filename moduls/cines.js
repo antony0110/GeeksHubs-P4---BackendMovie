@@ -19,12 +19,12 @@ Cines.init(
     }
 );
 
-Cines.sync({ force: true }).then(() => {
-     //  Cines.bulkCreate(times(10, ()=>({
+Cines.sync({ force: false }).then(() => {
+      // Cines.bulkCreate(times(10, ()=>({
     // Name:    `${faker.name.findName()}`,
-   //  Provincia:   `${faker.name.title()}`,
-     // estreno:  "true" 
-   //  })));
+  //  Provincia:   `${faker.name.title()}`,
+   //   estreno:  "true" 
+  // })));
 });
 
 module.exports = { Cines }
